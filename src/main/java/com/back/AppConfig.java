@@ -3,6 +3,7 @@ package com.back;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class AppConfig {
@@ -24,25 +25,20 @@ public class AppConfig {
         return 100;
     }
 
-//    @Bean
-//    public ApplicationRunner myApplicationRunner() {
-//        return new MyApplicationRunner();
-//    }
-
     @Bean
-    public ApplicationRunner myApplicationRunner() {
+    @Order(1)
+    public ApplicationRunner myApplicationRunner1() {
         return args -> {
-            System.out.println("MyApplicationRunner is running");
+            System.out.println("MyApplicationRunner1 is running");
         };
     }
 
-
-//    @Bean
-//    public ArrayList<Integer> numbers() {
-//        System.out.println("numbers 빈이 생성되었습니다.");
-//        return new ArrayList(List.of(1,2,3));
-//    }
-
-
+    @Bean
+    @Order(2)
+    public ApplicationRunner myApplicationRunner2() {
+        return args -> {
+            System.out.println("MyApplicationRunner2 is running");
+        };
+    }
 
 }
